@@ -1,15 +1,14 @@
 
-const http = require('http');
+const express = require('express');
+const app = express();
 
-const hostname = '0.0.0.0';
-const port = 3000;
+// Use the PORT environment variable or fallback to 3000 for local testing
+const PORT = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World from Node.js App!');
+app.get('/', (req, res) => {
+  res.send('👋 Hello, World! This is deployed on Render!');
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });
